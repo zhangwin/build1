@@ -108,14 +108,6 @@ jobs:
         git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
-        if [ build/${{matrix.target}} != build/openwrt ]; then
-          rm -rf package/ctcgfw/luci-app-argon-config
-          rm -rf package/lienol/luci-app-timecontrol
-          rm -rf package/ctcgfw/luci-theme-argonv3
-          rm -rf package/lean/luci-app-netdata
-          rm -rf package/lean/luci-theme-argon
-          rm -rf package/lean/k3screenctrl
-        fi
         
 
     - name: 加载源,patch补丁和自定义设置
