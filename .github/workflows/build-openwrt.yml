@@ -19,7 +19,7 @@ on:
       wxtz:
         description: '微信通知'
         required: false
-        default: 'wxtz-actions'
+        default: 'wxtz'
       release:
         description: '发布固件'
         required: false
@@ -38,9 +38,9 @@ on:
 
 env: 
   REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
-  SCKEY: ${{ secrets.SCKEY }}
+  WX_SCKEY: ${{ secrets.WX_SCKEY }}
   TZ: Asia/Shanghai
-  GITHUB_RELEASE: https://github.com/281677160/build-openwrt/releases
+  GITHUB_RELEASE: https://github.com/zhangwin/build1/releases
 
 jobs: 
   build:
@@ -84,7 +84,7 @@ jobs:
       uses: emon100/Action-Serverchan@v2
       if: env.SERVERCHAN_SCKEY == 'true' || (github.event.inputs.wxtz == 'wxtz' && github.event.inputs.wxtz  != 'false')
       with:
-        SCKEY: ${{ secrets.SCKEY }}
+        SCKEY: ${{ secrets.WX_SCKEY }}
         text: 主人${{matrix.target}}编译开始啦
         desp: 主人您要编译的[${{ env.WXFB_MESSAGE }}]固件正在努力耕耘中,请耐心等待......
     
@@ -142,7 +142,7 @@ jobs:
         popd
  
     - name: SSH远程连接（运行到此必须刷新一次网页耐心等待代码展开,不能频繁刷新）
-      uses: garypang13/debugger-action@master
+      uses: zhangwin/debugger-action@master
       if: env.SSH_ACTIONS == 'true' || (github.event.inputs.ssh == 'ssh' && github.event.inputs.ssh  != 'false')
 
     - name: 下载软件包
@@ -252,7 +252,7 @@ jobs:
       uses: emon100/Action-Serverchan@v2
       if: steps.organizer.outputs.status == 'success' && env.SERVERCHAN_SCKEY == 'true' || (github.event.inputs.wxtz == 'wxtz' && github.event.inputs.wxtz  != 'false')
       with:
-        SCKEY: ${{ secrets.SCKEY }}
+        SCKEY: ${{ secrets.WX_SCKEY }}
         text: 恭喜主人${{matrix.target}}固件编译成功！
         desp: 我亲爱的主人您要编译的${{ env.WXFB_MESSAGE }}固件成功编译完成了！
               
