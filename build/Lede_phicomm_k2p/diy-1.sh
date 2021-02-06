@@ -8,4 +8,4 @@
 # 想要什么插件就单独的拉取什么插件就好，或者告诉我，我把插件放我的插件包就行了
 # 软件包地址：https://github.com/281677160/openwrt-package
 # lede源码增加passwall,也适用于增加其他插件的方法
-sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
+sed -i '$a src-git passwall https://github.com/zhangwin/openwrt-passwall' feeds.conf.default
