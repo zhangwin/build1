@@ -9,3 +9,4 @@
 # 软件包地址：https://github.com/281677160/openwrt-package
 # lede源码增加passwall,也适用于增加其他插件的方法
 sed -i '$a src-git passwall https://github.com/zhangwin/openwrt-passwall' feeds.conf.default
+sed -i '$a src-git ddnsto https://github.com/linkease/ddnsto-openwrt' feeds.conf.default
